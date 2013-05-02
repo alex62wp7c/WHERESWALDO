@@ -12,7 +12,7 @@ class Mapping
 	]
 
 	def initialize
-		@yettoplay = MYWALDOS.clone
+		@yettoplay = MYWALDOS
 		@current = []
 		@played = []
 	end
@@ -22,15 +22,16 @@ class Mapping
 
 	def beginGame
 		@current = @yettoplay.shift
+		return @current
 	end
 
-	def turnGame
+	def winGame
 		@played.push(@current)
 	end
 
 	def playGame
-		for w in @yettoplay
-			return beginGame + turnGame
+		@yettoplay.each do |w|
+			return beginGame
 		end
 	end
 end
